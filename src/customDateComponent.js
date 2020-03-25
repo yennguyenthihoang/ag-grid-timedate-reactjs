@@ -13,16 +13,21 @@ export default class CustomDateComponent extends Component {
   render() {
     //Inlining styles to make simpler the component
     return (
-      <div
+      <div>
+        <div
         className="ag-input-wrapper custom-date-filter"
         role="presentation"
         ref="flatpickr"
-      >
-        <input type="text" ref="eInput" data-input style={{ width: '100%' }} />
-        <a className="input-button" title="clear" data-clear>
-          <i className="fa fa-times"></i>
-        </a>
-        
+        >
+          <input type="text" ref="eInput" data-input style={{ width: '50%' }} />
+          <a className="input-button" title="clear" data-clear>
+            <i className="fa fa-times"></i>
+          </a>
+          <input type="text" ref="eTime" data-input style={{ width: '50%' }} />
+          <a className="input-button" title="clear" data-clear>
+            <i className="fa fa-times"></i>
+          </a>
+        </div>
       </div>
     );
   }
@@ -30,12 +35,12 @@ export default class CustomDateComponent extends Component {
   componentDidMount() {
     this.picker = flatpickr(this.refs.flatpickr, {
       onChange: this.onDateChanged.bind(this),
-      dateFormat: 'd/m/Y',
+      dateFormat: 'd/m/Y hh:mm:ss',
       wrap: true,
     });
 
     this.eInput = this.refs.eInput;
-
+    this.eTime = this.refs.eTime;
     this.picker.calendarContainer.classList.add('ag-custom-component-popup');
   }
 

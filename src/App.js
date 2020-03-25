@@ -4,11 +4,13 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import CustomDateComponent from './customDateComponent.js';
+import { AllCommunityModules } from 'ag-grid-community';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      modules: AllCommunityModules,
       columnDefs: [{
         headerName: "Make", field: "make", sortable: true, filter: true
       }, {
@@ -82,7 +84,8 @@ class App extends Component {
           columnDefs={this.state.columnDefs}
           defaultColDef={this.state.defaultColDef}
           floatingFilter={true}
-          rowData={this.state.rowData}>
+          rowData={this.state.rowData}
+          frameworkComponents={this.state.frameworkComponents}>
         </AgGridReact>
       </div>
     );
